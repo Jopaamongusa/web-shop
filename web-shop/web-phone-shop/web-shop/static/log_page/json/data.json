@@ -1,0 +1,30 @@
+{
+    "title": "log page",
+
+    "content":{
+        "p":{
+            "tagname":"p",
+            "text":"AUTHORIZATION"
+        },
+        "input1":{
+            "class":"first",
+            "tagname":"input",
+            "name": "name",
+            "placeholder":"Задайте Ім'я",
+            "type": "text"
+        },
+        "input2":{
+            "class":"second",
+            "tagname":"input",
+            "name":"password",
+            "placeholder":"задайте пароль",
+            "type": "password"
+        },
+        "submit_button":{
+            "tagname":"button",
+            "type":"submit",
+            "text":"Вхід"
+            
+        }
+    }
+}
