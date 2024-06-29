@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %} 
+    autorization Page
+{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'log_page/css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    
+    {% for value, tagname in body['content'].items() %}
+
+        <span>
+
+        {% if tagname["tagname"] == 'a' %}
+            <{{ tagname["tagname"] }} href = "{{ tagname["href"] }}"> {{ tagname["text"] }} </{{ tagname["tagname"] }}>
+        
+    
+        {% elif tagname["tagname"] == "input" %}
+            <{{ tagname["tagname"] }} class = "{{ tagname["class"] }}" type = "{{ tagname["type"] }}"  name = "{{ tagname["name"] }}" placeholder = "{{ tagname["placeholder"] }}">
+
+        {% elif tagname["tagname"] == "button" %}
+            <{{ tagname["tagname"] }} type = "{{ tagname["type"] }}" > {{ tagname["text"] }} </{{ tagname['tagname'] }}>
+    
+        </span>
+
+
+        {% else %}
+            <{{ tagname["tagname"] }}> {{ tagname["text"] }} </{{ tagname["tagname"] }}>
+
+        {% endif %}
+    
+    {% endfor %}
+</form> 
+{% endblock %}

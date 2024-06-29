@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Admin page
+{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_page/css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+
+
+    {% for value, tagname in body['content'].items() %}
+        {% if tagname['tagname'] == 'a' %}
+            <{{ tagname['tagname'] }} href="{{ tagname['href'] }}">{{ tagname['text'] }}</{{ tagname['tagname'] }}>
+        {% else %}
+            <{{ tagname['tagname'] }}>{{ tagname['text'] }}</{{ tagname['tagname'] }}>
+        {% endif %}
+    {% endfor %}
+
+    <p> {{ user_name }} </p>
+
+    <br>
+
+    <form method="post">
+        <div class="modal-window-add-div">
+            <h6 >Додати новий товар</h6>
+            <button class="modal-window-add-button" >+</button>
+        </div>
+    </form>
+        <div id="modal1" class="modal-window-add" style="display: none;">
+
+            <form class="modal-window-add-form" method="post" enctype="multipart/form-data">
+                <h6 class="modal-h6">Додати новий продукт</h6>
+                <h6>Фото продукту</h6>
+                <input type="file"      name="image-add"    accept="image/*" class="image-add">
+                <input type="text"      name="name-add"     placeholder="Вкажіть назву"     class="input-data-add">
+                <input type="number"    name="price-add"    placeholder="Вкажіть ціну"      class="input-data-add">
+                <input type="number"    name="discount-add" placeholder="Вкажіть знижку"    class="input-data-add">
+                <input type="number"    name="count-add"    placeholder="Вкажіть кількість" class="input-data-add">
+
+                <textarea name="description-add" placeholder="Вкажіть опис" class="input-label"></textarea>
+
+                <button type="submit" name='new-product' value="new">Підтвердити</button>
+            </form>
+
+        </div>
+    
+    <br>    
+
+
+    {% for product in products %}
+        <form method="post">
+            <div class="container">
+                <img src="{{ url_for('static', filename = 'shop_page/images/' + product.name + '.png') }}" alt="">
+                <div class="edit">
+                    <button class="edit-img" id = "{{ product.id }}">/</button>
+                </div>                
+                <div class="vertical-line-right"></div>
+                <div class="text">
+                    {% for value, key in body['cataloge'].items() %}
+                        {% if key["tagname"] == 'button' %}
+                            <{{ key["tagname"] }} class="{{ key["class"] }}" id="{{ product.id }}">{{ key["text"] }}</{{ key["tagname"] }}>
+                        {% elif key["tagname"] == 'h2' %}
+                            <{{ key["tagname"] }}>{{ product.name }}</{{ key["tagname"] }}>
+                            <div class="edit">
+                                <button class="edit-text" name="name" id = "{{ product.id }}">/</button>
+                            </div>
+                        {% elif key["tagname"] == 'h3' and key['text'] == 'Ціна' %}
+                            <{{ key["tagname"] }}>{{ key["text"] }} {{ product.price }}</{{ key["tagname"] }}>
+                            <div class="edit">
+                                <button class="edit-text" name="price" class="price" id = "{{ product.id }}">/</button>
+                            </div>
+                        {% elif key["tagname"] == 'h3' and key["text"] == 'Знижка' %}
+                            <{{ key["tagname"] }}>{{ key["text"] }} {{ product.discount }}</{{ key["tagname"] }}>
+                            <div class="edit">
+                                <button class="edit-text" name="discount" id = "{{ product.id }}">/</button>
+                            </div>
+                        {% elif key["tagname"] == 'h4' %}
+                            <{{ key["tagname"] }}>{{ key["text"] }} {{ product.description }}</{{ key["tagname"] }}>
+                            <div class="edit">
+                                <button class="edit-text" name="description" id = "{{ product.id }}">/</button>
+                            </div>
+                        {% else %}
+                            <{{ key["tagname"] }}>{{ key["text"] }}</{{ key["tagname"] }}>
+                            <div class="edit">
+                                <button class="edit-text" name="count" id = "{{ product.id }}">/</button>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    <h2>Ємність</h2>
+                    <div class="div_memory">
+                        <button class="memory">256</button>
+                        <div class="edit">
+                            <button class="edit-memory-1">/</button>
+                        </div>
+                        <button class="memory">512</button>
+                        <div class="edit">
+                            <button class="edit-memory-2">/</button>
+                        </div>
+                        <button class="memory">1028</button>
+                        <div class="edit">
+                            <button class="edit-memory-3">/</button>
+                        </div>
+                    </div>
+                    <button name="del" id="{{ product.id }}" value="{{ product.id }}">Видалити продукт</button>
+                </div>
+                <div class="vertical-line-left"></div>
+            </div>
+        </form>
+    {% endfor %}
+
+    <div class="modal-window" style="display: none;">
+        <form class="modal-form" method="post" enctype="multipart/form-data">
+            <label for="" class="modal-label"></label>
+            <input type="" accept="" name="" placeholder="" class="input-data">
+            <button class="change-submit" type="submit" value="" name="set-changes">Зберегти зміни</button>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='admin_page/js/editCookie.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{
+    "title": "shop page",
+
+    "content":{
+        "a_HOME": {
+            "tagname": "a",
+            "class": "text",
+            "href": "/",
+            "text": "HOME"
+        },        
+        "a_shop": {
+            "tagname": "a",
+            "href": "/shop/",
+            "class": "text",
+            "text": "SHOP"
+        },
+        "a_BASKET": {
+            "tagname": "a",
+            "class": "text",
+            "href": "/cart/",
+            "text": "CART"
+        },
+        "a_CONTACTS": {
+            "tagname": "a",
+            "href": "",
+            "class": "text",
+            "text": "CONTACTS"
+        }
+    },    
+    "together":{
+        "button":{
+            "tagname":"button",
+            "text":"перейти до оплати",
+            "class":"confirm"
+        }
+    }
+}

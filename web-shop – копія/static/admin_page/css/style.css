@@ -1,0 +1,269 @@
+.vertical-line-left {
+    width: 1px; /* ширина лінії */
+    height: 200px; /* висота лінії */
+    background-color: black; /* колір лінії */
+    margin: 20px; /* відступи, якщо потрібні */
+    margin-left: 0;
+}
+.vertical-line-right{
+    width: 1px; /* ширина лінії */
+    height: 200px; /* висота лінії */
+    background-color: black; /* колір лінії */
+    margin: 0; /* відступи, якщо потрібні */
+}
+/* body {
+    position: relative;
+} */
+h1{
+    padding-left: 34%;
+    padding-top: 25%;
+    font-size: 100px;
+    font-family: Inter;
+    
+}
+
+a {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 5;
+    /* float: left; */
+    font-size: 30px;
+    margin-right: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+p {
+    position: absolute;
+    right: 10px;
+    top: 0%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* div {
+    display: flex;
+    align-items: center;
+} */
+
+/* h2, h3, h4, h5 {
+    margin: 0;
+} */
+
+.container {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.container img {
+    max-width: 200px; /* Розмір зображення можна налаштувати за потреби */
+    margin-right: 20px; /* Відстань між зображенням та текстом */
+}
+
+.text {
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+    width: 500px;
+}
+
+.text h2, .text h3, .text h4, .text h5, .text form {
+    /* background-color: blueviolet; */
+    margin: 10px 0; /* Відступи між елементами тексту */
+}
+
+.buy {
+    width: 200px;
+    padding: 10px 20px;
+    background-color: yellow;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border: solid black;
+    border-radius: 13px;
+}
+
+button:hover {
+    background-color: green;
+}
+
+.div_memory{
+    display: flex;
+    flex-direction: row;
+}
+.memory{
+    margin-top: 15px;
+    margin-left: 10px ;
+    font-size: 10px;
+    width: 50px;
+    height: 20px;
+    border-radius: 15px;
+    border: solid 2px;
+}
+.message {
+    position: absolute;
+    margin-left: 500px; 
+    margin-top: -20px;   
+}
+
+.message h1 {
+    font-size: 15px;
+    width: 25px;
+    height: 25px;
+    border: solid black ;
+    background-color: yellow;
+    border-radius: 28px;
+}
+
+
+
+.form, img{
+    display: flex;
+    width: 500px;
+    flex-direction: column;
+}
+.form *,  img{
+    margin-top: 20px;
+}
+
+
+.modal-window{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.modal-form{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 350px;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: white;
+}
+.modal-form * {
+    margin: 10px;
+}
+.modal-label, .input-data{
+    width: 300px;
+    text-align: left;
+}
+
+.modal-label{
+    font-size: 35px;
+}
+
+.modal-window-add {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex; /* Додаємо display flex */
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+
+
+.modal-window-add-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 700px;
+    border: 3px solid black;
+    border-radius: 15px;
+    background-color: white;
+    font-size: 30px;
+}
+
+.modal-window-add-form * {
+    /* margin-bottom: ; */
+    margin: 10px;
+}
+
+.input-data-add{
+    height: 45px;
+    width: 450px;
+    border: solid black 2px;
+    border-radius: 5px ;
+}
+.modal-label, .input-data {
+    width: 300px;
+    text-align: left;
+}
+
+.input-data{
+    height: 45px;
+    width: 450px;
+    border: 3px solid black;
+    border-radius: 10px;
+    font-size: 25px;
+}
+
+.image-add{
+    font-size: 30px;
+    height: 42px;
+    width: 450px;
+    border: solid black 2px;
+    border-radius: 5px;
+}
+
+
+.modal-window-add-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 80%;
+    margin-top: -50px;
+    margin-bottom: -160px;
+}
+
+.modal-window-add-button{
+    width: 45;
+    height: 45;
+    border-radius: 10px;
+    background-color: grey;
+}
+
+.modal-window-add-div h6{
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+}
+
+.edit button{
+    background-color: grey;
+    border: none;
+    cursor: pointer;
+    border: solid black;
+    border-radius: 5px;
+}
+
+.modal-h6{
+    font-size: 35px;
+}
+
+.change-submit{
+    background-color: white;
+    border: solid white 5px;
+    height: 50px;
+    width: 450px;
+    font-size: 25px;
+}

@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %}
+    basket Page
+{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'basket_page/css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+    {% for value, tagname in body['content'].items() %}
+        {% if tagname["tagname"] == 'a' %}
+            <{{ tagname["tagname"] }} href = "{{ tagname["href"] }}"> {{ tagname["text"] }} </{{ tagname["tagname"] }}>
+        {% else %}
+            <{{ tagname["tagname"] }}> {{ tagname["text"] }} </{{ tagname["tagname"] }}>
+        {% endif %}       
+    {% endfor %}
+    <p> {{ user_name }} </p>
+    
+    {% if products %}
+        <div class = "message">
+            <h1> {{ count }} </h1>
+        </div>
+
+        <div class="product-normal">
+
+            {% for product in products %}
+               {% set product_id = product.id %}
+               <div id = "{{ product.id }}" class = 'container'>
+                   <img src="{{ url_for('static', filename='shop_page/images/' + product.name + '.png') }}" alt="photo">
+                   <div class=" vertical-line-right" ></div>
+                   <div class="text">
+                   <h2>{{product.name}}</h2>
+                   <h3>{{product.price}}</h3>
+                   <h4>{{product.description}}</h4>
+                   <button class= "minus" id= "{{ product.id }}" >
+                       -
+                   </button>
+                   <h5>
+                       {{ product.count }}
+                   </h5>
+                   <button class= "add" id= "{{ product.id }}" >
+                       +
+                   </button>
+                   </div>
+               </div>
+            {% endfor %} 
+
+        </div>
+
+        <div class="price">
+            {% for price, value in body['together'].items() %} 
+                {% if value["tagname"] == "button" %}
+                <form method="post">
+                    <{{ value["tagname"] }} type ="submit" name = "sent" value = "{{ product_id }}" class="{{ value["class"] }}"  > {{ value["text"] }} </{{ value["tagname"] }}>
+                </form>
+                {% endif %}
+                {% set sum = 0 %}
+                <h6>загальна ціна</h6>
+                {% for product in products %}
+                    <h2>{{ product.price }}</h2>
+                    {% set sum = sum + product.price %}
+                    <h3>{{ sum }}</h3>
+                    {% set real_sum = sum * ( 1 - (product.discount / 100)) %}
+                    <h3>{{ real_sum }}</h3>
+                {% endfor %}
+                
+            {% endfor %}
+        </div>         
+
+        <div id="modal1" class="modal-window-div" style="display: none;">
+
+            <form class="modal-window-form" method="post" enctype="multipart/form-data">
+                <h6 class="modal-h6">ОФОРМЛЕННЯ ЗАМОВЛЕННЯ</h6>
+                <input type="text"      name="username"     placeholder="Вкажіть ім'я"     class="input-data-users">
+                <input type="text"      name="forname"      placeholder="Вкажіть прізвище"     class="input-data-users">
+                <input type="number"    name="phone-number" placeholder="Вкажіть номер телефону"      class="input-data-users">
+                <input type="text"      name="email"        placeholder="Вкажіть електрону почту" class="input-data-users">                
+                <input type="text"      name="city"         placeholder="Вкажіть місто"    class="input-data-users">
+                <input type="text"      name="post"         placeholder="Вкажіть віділення нової почти" class="input-data-users">
+                <input type="text"      name="more_info"    placeholder="Задайте по бажанню" class="input-data-users">
+
+                <button type="submit" class="modal-window-button" name='new-product' value="new">Підтвердити</button>
+            </form>
+
+        </div>
+            
+        
+     
+
+
+    {% else %}
+        <h2>Корзина порожня</h2>
+    {% endif %}
+        
+
+    <div class="after-sumbit" style='display: none;'>
+        {% set all_price = 0 %}
+        <h2>Ваші дані в обробці консультація зв'яжется з вами для підтвердження замовлення</h2>
+        {% for product in products %}
+            {% set real_sum = product.price * ( 1 - (product.discount / 100)) %}
+            {% set all_price = all_price + real_sum %}
+            <img src="{{ url_for('static', filename='shop_page/images/' + product.name + '.png') }}" alt="photo">
+            <h2>{{ product.name }}</h2>
+            <h5>{{ product.count }}</h5>
+            <h3>{{ real_sum }}</h3>
+        {% endfor %}
+        <h2>{{ all_price }}</h2>
+
+    </div>
+    
+
+    <script src="{{ url_for('static', filename = 'basket_page/js/modal_window.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'basket_page/js/cookie_minus.js') }}"></script>    
+    <script src="{{ url_for('static', filename = 'basket_page/js/cookie_add.js') }}"></script> 
+{% endblock %}

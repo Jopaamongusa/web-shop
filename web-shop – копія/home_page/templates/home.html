@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'home_page/css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div>
+        {% for value, tagname in body['content'].items() %}
+            {% if tagname["tagname"] == 'a' %}
+                <{{ tagname["tagname"] }} href = "{{ tagname["href"] }}"> {{ tagname["text"] }} </{{ tagname["tagname"] }}>
+            {% elif tagname["tagname"] != "a"  %}
+                <{{ tagname["tagname"] }}> {{ tagname["text"] }} </{{ tagname["tagname"] }}>
+            {% endif %}       
+        {% endfor %}
+        <p> {{ user_name }} </p>
+    </div>
+{% endblock %}

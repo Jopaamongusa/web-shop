@@ -1,0 +1,33 @@
+{
+    "title": "register page",
+
+    "content":{
+        "input1":{
+            "class":"first",
+            "tagname":"input",
+            "name": "name",
+            "placeholder":"Задайте Імя",
+            "type": "text"
+        },
+        "input2":{
+            "class":"second",
+            "tagname":"input",
+            "name":"email",
+            "placeholder":"задайте email",
+            "type": "email"
+        },
+        "input3":{
+            "class":"third",
+            "tagname":"input",
+            "name": "password",
+            "placeholder":"задайте пароль",
+            "type": "password"
+        },
+        "submit_button":{
+            "tagname":"button",
+            "type":"submit",
+            "text":"Відправити"
+            
+        }
+    }
+}

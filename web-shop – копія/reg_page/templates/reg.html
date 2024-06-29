@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %} 
+    registration Page
+{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'reg_page/css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<form method="post">
+    <div>
+        {% for value, tagname in body['content'].items() %}
+        
+            {% if tagname["tagname"] == "input" %}
+                <{{ tagname["tagname"] }} class = "{{ tagname["class"] }}" type = "{{ tagname["type"] }}"  name = "{{ tagname["name"] }}" placeholder = "{{ tagname["placeholder"] }}">
+        
+            {% elif tagname["tagname"] == "button" %}
+                <{{ tagname["tagname"] }} type = "{{ tagname["type"] }}" > {{ tagname["text"] }} </{{ tagname['tagname'] }}>
+        
+        
+            {% else %}
+                <{{ tagname["tagname"] }}> {{ tagname["text"] }} </{{ tagname["tagname"] }}>
+        
+            {% endif %}
+        
+        {% endfor %}
+    </div>
+</form> 
+{% endblock %}
